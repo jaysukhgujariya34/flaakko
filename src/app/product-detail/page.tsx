@@ -379,24 +379,27 @@ const ProductDetailPage = () => {
               {renderStatus()}
               {/* META FAVORITES */}
               <LikeButton className="absolute right-3 top-3 " />
-            </div>
-            <div className="grid grid-cols-2 gap-3 mt-3 sm:gap-6 sm:mt-6 xl:gap-8 xl:mt-8">
-              {[LIST_IMAGES_DEMO[1], LIST_IMAGES_DEMO[2]].map((item, index) => {
-                return (
-                  <div
-                    key={index}
-                    className="aspect-w-11 xl:aspect-w-10 2xl:aspect-w-11 aspect-h-16 relative"
-                  >
-                    <Image
-                      sizes="(max-width: 640px) 100vw, 33vw"
-                      fill
-                      src={item}
-                      className="w-full rounded-2xl object-cover"
-                      alt="product detail 1"
-                    />
-                  </div>
-                );
-              })}
+              <div className="flex flex-col ml-5 absolute left-0 top-12 ">
+                {[LIST_IMAGES_DEMO[1], LIST_IMAGES_DEMO[2]].map(
+                  (item, index) => {
+                    return (
+                      <div
+                        key={index}
+                        // style={{ width: "50px" }}
+                        className="mb-5 w-14 xl:w-20 cursor-pointer "
+                      >
+                        <Image
+                          // sizes="(max-width: 640px) 100vw, 33vw"
+                          // fill
+                          src={item}
+                          className="w-full rounded-2xl object-cover"
+                          alt="product detail 1"
+                        />
+                      </div>
+                    );
+                  }
+                )}
+              </div>
             </div>
           </div>
 

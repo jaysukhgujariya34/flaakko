@@ -23,6 +23,17 @@ const SectionHero2: FC<SectionHero2Props> = ({ className = "" }) => {
   const [isRunning, toggleIsRunning] = useBoolean(true);
   const [showContent, setShowContent] = useState(true);
 
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 3000);
+
+    // Clear the timer when the component unmounts
+    return () => clearTimeout(timer);
+  }, []);
+
   useInterval(
     () => {
       handleAutoNext();
@@ -85,6 +96,16 @@ const SectionHero2: FC<SectionHero2Props> = ({ className = "" }) => {
     return () => clearTimeout(timer);
   }, [isBigScreen]);
 
+  const Loading = () => (
+    <div
+      role="status"
+      className="flex items-center justify-center mx-5 h-96 nc-SectionHero2Item bg-gray-300 rounded-lg animate-pulse dark:bg-gray-700 nc-SectionHero2Item--animation inset-0 object-contain sm:mt-10 md:mt-5 sm:mx-20 md:mx-20 xl:mx-52  "
+      style={{ borderRadius: "1.5rem" }}
+    >
+      <span className="sr-only">Loading...</span>
+    </div>
+  );
+
   const renderItem = (index: number) => {
     const isActive = indexActive === index;
     const item = isBigScreen ? DATA[index] : SMALL_SCREEN_SLIDES[index];
@@ -93,42 +114,47 @@ const SectionHero2: FC<SectionHero2Props> = ({ className = "" }) => {
     }
     return (
       <>
-        <div
-          className="relative  nc-SectionHero2Item nc-SectionHero2Item--animation inset-0 object-contain sm:mt-10 md:mt-5 sm:mx-20 md:mx-20 xl:mx-52  "
-          style={{ borderRadius: "1.5rem" }}
-        >
-          <div className="mx-5">
-            <div className="absolute bottom-0 left-5 sm:bottom-5 sm:left-10 container pt-14 sm:pt-20 lg:pt-44 pb-5">
-              <div
-                className={`relative z-[1] w-full max-w-3xl space-y-8 sm:space-y-14 nc-SectionHero2Item__left`}
-              >
-                <div className="space-y-5 sm:space-y-6">
-                  <span className="nc-SectionHero2Item__subheading block text-base md:text-xl text-white font-medium">
-                    {item.subHeading}
-                  </span>
-                  <h2 className="nc-SectionHero2Item__heading font-semibold text-3xl sm:text-4xl md:text-5xl xl:text-6xl 2xl:text-7xl !leading-[114%] text-white">
-                    {item.heading}
-                  </h2>
-                </div>
-
-                <ButtonPrimary
-                  className="nc-SectionHero2Item__button dark:bg-slate-900 "
-                  sizeClass="py-2 px-6 sm:py-3 sm:px-5"
-                  href={item.btnLink}
+        {loading ? (
+          <Loading />
+        ) : (
+          <div
+            className="relative  nc-SectionHero2Item nc-SectionHero2Item--animation inset-0 object-contain sm:mt-10 md:mt-5 sm:mx-20 md:mx-20 xl:mx-52  "
+            style={{ borderRadius: "1.5rem" }}
+            key={index}
+          >
+            <div className="mx-5">
+              <div className="absolute bottom-0 left-5 sm:bottom-5 sm:left-10 container pt-14 sm:pt-20 lg:pt-44 pb-5">
+                <div
+                  className={`relative z-[1] w-full max-w-3xl space-y-8 sm:space-y-14 nc-SectionHero2Item__left`}
                 >
-                  <span>{item.btnText}</span>
-                </ButtonPrimary>
+                  <div className="space-y-5 sm:space-y-6">
+                    <span className="nc-SectionHero2Item__subheading block text-base md:text-xl text-white font-medium">
+                      {item.subHeading}
+                    </span>
+                    <h2 className="nc-SectionHero2Item__heading font-semibold text-3xl sm:text-4xl md:text-5xl xl:text-6xl 2xl:text-7xl !leading-[114%] text-white">
+                      {item.heading}
+                    </h2>
+                  </div>
+
+                  <ButtonPrimary
+                    className="nc-SectionHero2Item__button dark:bg-slate-900 "
+                    sizeClass="py-2 px-6 sm:py-3 sm:px-5"
+                    href={item.btnLink}
+                  >
+                    <span>{item.btnText}</span>
+                  </ButtonPrimary>
+                </div>
               </div>
+              <Image
+                // fill
+                // sizes="(max-width: 900px) 100vw, 100vw"
+                src={item.image}
+                style={{ borderRadius: "1.5rem", marginTop: "5px" }}
+                alt="hero"
+              />
             </div>
-            <Image
-              // fill
-              // sizes="(max-width: 900px) 100vw, 100vw"
-              src={item.image}
-              style={{ borderRadius: "1.5rem",marginTop:'5px' }}
-              alt="hero"
-            />
           </div>
-        </div>
+        )}
       </>
     );
   };

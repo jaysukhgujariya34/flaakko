@@ -30,6 +30,16 @@ const SectionSliderProductCard: FC<SectionSliderProductCardProps> = ({
 
   //
   const [isShow, setIsShow] = useState(false);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 3000);
+
+    // Clear the timer when the component unmounts
+    return () => clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
     const OPTIONS: Partial<Glide.Options> = {
@@ -69,6 +79,26 @@ const SectionSliderProductCard: FC<SectionSliderProductCardProps> = ({
     };
   }, [sliderRef]);
 
+  const Loading = () => (
+    <div role="status" className="max-w-sm p-4  rounded  animate-pulse md:p-6">
+      <div className="flex items-center justify-center h-48 mb-4 bg-gray-300 rounded dark:bg-gray-700"></div>
+      <div className="h-3.5 bg-gray-300 rounded-full dark:bg-gray-600 w-48 mb-4"></div>
+      <div className="h-3.5 bg-gray-300 rounded-full dark:bg-gray-600 mb-2.5"></div>
+      <div className="h-3.5 bg-gray-300 rounded-full dark:bg-gray-600 mb-2.5"></div>
+      <div className="h-3.5 bg-gray-300 rounded-full dark:bg-gray-600"></div>
+
+      <div className="flex items-center mt-2 justify-between">
+        <div>
+          <div className="h-3.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5"></div>
+          <div className="w-32 h-3.5 bg-gray-200 rounded-full dark:bg-gray-700"></div>
+        </div>
+        <div className="h-3.5 bg-gray-300 rounded-full dark:bg-gray-700 w-12"></div>
+      </div>
+
+      <span className="sr-only">Loading...</span>
+    </div>
+  );
+
   return (
     <div className={`nc-SectionSliderProductCard ${className}`}>
       <div ref={sliderRef} className={`flow-root ${isShow ? "" : "invisible"}`}>
@@ -80,11 +110,12 @@ const SectionSliderProductCard: FC<SectionSliderProductCardProps> = ({
         >
           {heading || `New Arrivals`}
         </Heading>
+
         <div className="glide__track" data-glide-el="track">
           <ul className="glide__slides">
             {data.map((item, index) => (
               <li key={index} className={`glide__slide ${itemClassName}`}>
-                <ProductCard data={item} />
+                {loading ? <Loading /> : <ProductCard data={item} />}
               </li>
             ))}
           </ul>
