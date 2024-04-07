@@ -99,7 +99,7 @@ const SectionHero2: FC<SectionHero2Props> = ({ className = "" }) => {
   const Loading = () => (
     <div
       role="status"
-      className="flex items-center justify-center mx-5 h-96 nc-SectionHero2Item bg-gray-300 rounded-lg animate-pulse dark:bg-gray-700 nc-SectionHero2Item--animation inset-0 object-contain sm:mt-10 md:mt-5 sm:mx-20 md:mx-20 xl:mx-52  "
+      className="flex items-center justify-center mt-5 mx-5 h-96 nc-SectionHero2Item bg-gray-300 rounded-lg animate-pulse dark:bg-gray-700 nc-SectionHero2Item--animation inset-0 object-contain sm:mt-10 md:mt-5 sm:mx-20 md:mx-20 xl:mx-52  "
       style={{ borderRadius: "1.5rem" }}
     >
       <span className="sr-only">Loading...</span>
