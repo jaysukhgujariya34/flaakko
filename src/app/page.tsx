@@ -2,7 +2,7 @@ import React from "react";
 import SectionHowItWork from "@/components/SectionHowItWork/SectionHowItWork";
 import BackgroundSection from "@/components/BackgroundSection/BackgroundSection";
 import SectionPromo1 from "@/components/SectionPromo1";
-import SectionHero2 from "@/components/SectionHero/SectionHero2";
+import SectionHero from "@/components/SectionHero/SectionHero";
 import SectionSliderLargeProduct from "@/components/SectionSliderLargeProduct";
 import SectionSliderProductCard from "@/components/SectionSliderProductCard";
 import DiscoverMoreSlider from "@/components/DiscoverMoreSlider";
@@ -20,7 +20,7 @@ import SectionMagazine5 from "@/app/blog/SectionMagazine5";
 function PageHome() {
   return (
     <div className="nc-PageHome relative overflow-hidden">
-      <SectionHero2 />
+      <SectionHero />
 
       <div className="mt-24 lg:mt-32">
         <DiscoverMoreSlider />

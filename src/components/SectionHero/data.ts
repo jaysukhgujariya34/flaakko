@@ -4,12 +4,13 @@ import imageRightPng from "@/images/slide-1-b.jpg";
 import imageRightPng2 from "@/images/slide-2-b.jpg";
 import imageRightPng3 from "@/images/slide-3-b.jpg";
 import imageSlide4 from "@/images/slide-4-b.png";
+import imageSlide5 from "@/images/side-5.jpg";
 
 import Slide4 from "@/images/productos-hoodie-de-gira-blanco-2.jpg";
 import Slide5 from "@/images/productos-remera-ojos-negra-2.jpg";
 import Slide6 from "@/images/productos-remera-de-gira-blanca-2.jpg";
 
-interface Hero2DataType {
+interface slide {
   image: StaticImageData | string;
   heading: string;
   subHeading: string;
@@ -17,31 +18,7 @@ interface Hero2DataType {
   btnLink: Route;
 }
 
-export const HERO2_DEMO_DATA: Hero2DataType[] = [
-  {
-    image: imageRightPng2,
-    heading: "Drop #01",
-    subHeading: "In this season, find the best 🔥",
-    btnText: "Shop Now",
-    btnLink: "/",
-  },
-  {
-    image: imageRightPng3,
-    heading: "Drop #02",
-    subHeading: "In this season, find the best 🔥",
-    btnText: "Shop Now",
-    btnLink: "/",
-  },
-  {
-    image: imageRightPng,
-    heading: "Drop #03",
-    subHeading: "In this season, find the best 🔥",
-    btnText: "Shop Now",
-    btnLink: "/",
-  },
-];
-
-export const BIG_SCREEN_SLIDES: Hero2DataType[] = [
+export const BIG_SCREEN_SLIDES: slide[] = [
   {
     image: imageSlide4,
     heading: "Drop #01",
@@ -72,7 +49,7 @@ export const BIG_SCREEN_SLIDES: Hero2DataType[] = [
   },
 ];
 
-export const SMALL_SCREEN_SLIDES: Hero2DataType[] = [
+export const SMALL_SCREEN_SLIDES: slide[] = [
   {
     image: Slide4,
     heading: "Drop #01",
@@ -90,6 +67,13 @@ export const SMALL_SCREEN_SLIDES: Hero2DataType[] = [
   {
     image: Slide6,
     heading: "Drop #03",
+    subHeading: "In this season, find the best 🔥",
+    btnText: "Shop Now",
+    btnLink: "/",
+  },
+  {
+    image: imageSlide5,
+    heading: "Drop #04",
     subHeading: "In this season, find the best 🔥",
     btnText: "Shop Now",
     btnLink: "/",
