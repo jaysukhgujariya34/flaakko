@@ -113,14 +113,13 @@ const SectionHero: FC<SectionHero2Props> = ({ className = "" }) => {
       return null;
     }
     return (
-      <>
+      <div key={index}>
         {loading ? (
           <Loading />
         ) : (
           <div
             className="relative  nc-SectionHero2Item nc-SectionHero2Item--animation inset-0 object-contain sm:mt-10 md:mt-5 sm:mx-20 md:mx-20 xl:mx-52  "
             style={{ borderRadius: "1.5rem" }}
-            key={index}
           >
             <div className="mx-5">
               <div className="absolute bottom-0 left-5 sm:bottom-5 sm:left-10 container pt-14 sm:pt-20 lg:pt-44 pb-5">
@@ -155,7 +154,7 @@ const SectionHero: FC<SectionHero2Props> = ({ className = "" }) => {
             </div>
           </div>
         )}
-      </>
+      </div>
     );
   };
 
