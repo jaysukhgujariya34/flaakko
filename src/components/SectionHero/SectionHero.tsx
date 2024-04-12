@@ -28,7 +28,7 @@ const SectionHero: FC<SectionHero2Props> = ({ className = "" }) => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 3000);
+    }, 100);
 
     // Clear the timer when the component unmounts
     return () => clearTimeout(timer);

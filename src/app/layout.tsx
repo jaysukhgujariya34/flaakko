@@ -13,6 +13,11 @@ const poppins = Poppins({
   weight: ["300", "400", "500", "600", "700"],
 });
 
+export const metadata = {
+  title: 'flaakko',
+  description:'e-commers web app'
+}
+
 export default function RootLayout({
   children,
   params,
