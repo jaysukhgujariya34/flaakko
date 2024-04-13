@@ -9,9 +9,21 @@ const userSchema = new mongoose.Schema({
     type: String,
     require: true,
   },
+  role: {
+    type: String,
+    default:'user'
+  },
   password: {
     type: String,
     require: true,
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  },
+  updatedAt: {
+    type: Date,
+    default: Date.now,
   },
 });
 

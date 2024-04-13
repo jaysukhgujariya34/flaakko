@@ -8,8 +8,7 @@ Connection();
 export const POST = async (NextRequest: Request) => {
   try {
     const body = await NextRequest.json();
-    console.log(body);
-    const { name, email, password } = body;
+    const { name, email, password} = body;
 
     if (!name || !email || !password) {
       return new Response("Name, Username and Password is required", {
@@ -33,7 +32,7 @@ export const POST = async (NextRequest: Request) => {
 
     await newUser.save();
 
-    return new Response("User saved successfully", { status: 200 });
+    return new Response("Signup successful! Welcome flaakko!", { status: 200 });
   } catch (error) {
     console.log(error);
   }

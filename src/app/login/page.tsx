@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Formik, Form, Field, ErrorMessage, FieldProps } from "formik";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
 
 interface FormValues {
   email: string;
@@ -21,9 +22,9 @@ const Login: React.FC = () => {
   ) => {
     // API
     try {
-      const res = await axios.post("/api/users/login", values);
+      const res = await axios.post("/api/login", values);
       if (res.status === 200) {
-        console.log("login sussesfully", res);
+        toast.success(res.data.message);
         router.push("/");
       }
     } catch (error) {
@@ -33,7 +34,7 @@ const Login: React.FC = () => {
     resetForm();
   };
   return (
-    <div className={`nc-PageSignUp `} >
+    <div className={`nc-PageSignUp `}>
       <div className="container mb-24 lg:mb-32">
         <h2 className="my-20 flex items-center text-3xl leading-[115%] md:text-5xl md:leading-[115%] font-semibold text-neutral-900 dark:text-neutral-100 justify-center">
           Login

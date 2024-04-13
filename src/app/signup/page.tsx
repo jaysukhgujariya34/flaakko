@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Formik, Form, Field, ErrorMessage, FieldProps } from "formik";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
 
 interface FormValues {
   name: string;
@@ -22,15 +23,15 @@ const PageLogin: React.FC = () => {
     values: FormValues,
     { resetForm }: { resetForm: () => void }
   ) => {
- 
     // API
     try {
-      const res = await axios.post("/api/users/register", values);
+      const res = await axios.post("/api/register", values);
       if (res.status === 200) {
-        console.log("signup sussesfully");
+        toast.success(res.data);
         router.push("/login");
       }
-    } catch (error) {
+    } catch (error: any) {
+      toast.success(error);
       console.log(error);
     }
 
@@ -163,11 +164,11 @@ const PageLogin: React.FC = () => {
             )}
           </Formik>
 
-          {/* ==== */}
+          {/* ==  == */}
           <span className="block text-center text-neutral-700 dark:text-neutral-300">
-            New user? {` `}
-            <Link className="text-green-600" href="/signup">
-              Create an account
+            Already have an account? {` `}
+            <Link className="text-green-600" href="/login">
+              Sign in
             </Link>
           </span>
         </div>
