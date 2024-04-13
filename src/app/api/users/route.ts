@@ -40,25 +40,4 @@ export async function GET(): Promise<NextResponse> {
   }
 }
 
-// export async function DELETE(request: NextRequest): Promise<NextResponse> {
-//   const id = new URL(request.url, "https://example.com").searchParams.get("id");
 
-//   if (!id) {
-//     return NextResponse.json({ message: "Missing user ID" }, { status: 400 });
-//   }
-
-//   try {
-//     await connectMongoDB(); // Connect to MongoDB
-//     const deletedUser = await User.findByIdAndDelete(id); // Find and delete the user by ID
-//     if (!deletedUser) {
-//       return NextResponse.json({ message: "User not found" }, { status: 404 });
-//     }
-//     return NextResponse.json({ message: "User deleted" }, { status: 200 }); // Respond with success message
-//   } catch (error) {
-//     console.error("Error deleting user:", error);
-//     return NextResponse.json(
-//       { message: "Error deleting user" },
-//       { status: 500 }
-//     ); // Respond with error message
-//   }
-// }
