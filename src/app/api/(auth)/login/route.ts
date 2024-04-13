@@ -25,11 +25,18 @@ export const POST = async (NextRequest: Request) => {
       return new Response("Incorrect Password", { status: 400 });
     }
 
-    const tokenData = {
-      email: user.email,
-      id: user._id,
-    };
+    // Ensure process.env.JWT_SECRETKEY is defined
+    if (!process.env.JWT_SECRETKEY) {
+      throw new Error("JWT secret key is not defined");
+    }
 
+    // Assuming tokenData is your payload
+     const tokenData = {
+       email: user.email,
+       id: user._id,
+     };
+
+    // Sign the token
     const token = jwt.sign(tokenData, process.env.JWT_SECRETKEY, {
       expiresIn: "1d",
     });
