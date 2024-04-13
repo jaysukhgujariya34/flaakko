@@ -1,6 +1,6 @@
 # FLAAKKO 
 
-e-commesrs app built with Next js 14 and mongodb database. Currently WIP.
+e commerce web app built with Nextjs 14 . Currently WIP.
 
 ## App Preview
 
