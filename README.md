@@ -1,4 +1,4 @@
-# FLAAKKO App
+# FLAAKKO 
 
 e-commesrs app built with Next js 14 and mongodb database. Currently WIP.
 
